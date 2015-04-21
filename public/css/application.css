@@ -1,0 +1,12 @@
+* {
+  background-image: url("../images/Archery-Range.jpg");
+  background-color: #cccccc;
+  background-size: 100%;
+}
+
+header {
+  font-family: 'Permanent Marker', arial;
+  font-size: 50px;
+  text-align: right;
+  margin-right: 10px;
+}
