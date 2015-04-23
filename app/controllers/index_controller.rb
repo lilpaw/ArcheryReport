@@ -16,18 +16,24 @@ Instagram.configure do |config|
 end
 
 get '/' do
+  erb :homepage
+end
+
+get '/oauth' do
   redirect Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
 end
 
 get "/oauth/callback" do
   response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
   session[:access_token] = response.access_token
-  redirect "/index"
+  redirect "/"
 end
 
 
 
 get '/index' do
+# response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
+# @username = response["user"]["username"]
 
 erb :homepage
 
