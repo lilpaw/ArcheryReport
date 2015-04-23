@@ -8,12 +8,23 @@ Dotenv.load
 
 enable :sessions
 
-CALLBACK_URL = "https://archery.herokuapp/oauth/callback"
+#LOCAL HOST INFO
+
+CALLBACK_URL = "http://localhost:9393/oauth/callback"
 
 Instagram.configure do |config|
-  config.client_id = ENV['CLIENT_ID']
-  config.client_secret = ENV['CLIENT_SECRET']
+  config.client_id = ENV['LH_CLIENT_ID']
+  config.client_secret = ENV['LH_CLIENT_SECRET']
 end
+
+# HEROKU INFO
+
+# CALLBACK_URL = "https://archery.herokuapp/oauth/callback"
+
+# Instagram.configure do |config|
+#   config.client_id = ENV['CLIENT_ID']
+#   config.client_secret = ENV['CLIENT_SECRET']
+# end
 
 get '/' do
   erb :homepage
@@ -31,10 +42,12 @@ end
 
 
 
-get '/index' do
-# response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
-# @username = response["user"]["username"]
+# get '/index' do
+# # response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
+# # @username = response["user"]["username"]
 
-erb :homepage
+# erb :homepage
 
-end
+# end
+
+
