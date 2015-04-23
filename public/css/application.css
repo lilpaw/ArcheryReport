@@ -18,12 +18,12 @@ header {
   right: 0;
 }
 
-.oauth-button {
+.sessions-buttons-container .oauth-button {
   background-color: #E8F5E9;
   border-radius: 10px;
-  /*position: relative;*/
+  position: relative;
   display: inline;
-  /*float: right;*/
+  float: right;
   margin-right: 10px;
   padding: 10px;
 }
