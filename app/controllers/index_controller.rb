@@ -27,18 +27,33 @@ end
 # end
 
 get '/' do
+  # @tags = Tag.all
+  p session[:access_token]
   erb :homepage
 end
 
-get '/oauth' do
+get '/oauth/connect' do
   redirect Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
 end
 
 get "/oauth/callback" do
   response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
-  session[:access_token] = response.access_token
   redirect "/"
 end
+
+# get "/tags/archery/media/recent" do
+#   @searchresults = []
+#   client = Instagram.client(:access_token => session[:access_token])
+
+#   tags = client.tag_search("archery")
+#   for media_item in client.tag_recent_media(tags[0].name)
+#     @searchresults << "<img src='#{media_item.images.thumbnail.url}'>"
+#   end
+#   # content_type :json
+#   # @searchresults << client
+#   return @searchresults.to_json
+
+# end
 
 
 

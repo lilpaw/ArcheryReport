@@ -1,0 +1,34 @@
+David's call
+
+function searchImages(event){
+        event.preventDefault();
+        tag = $("#hashtag").val()
+        debugger
+        $.ajax({
+          type: "GET",
+          dataType: "jsonp",
+          cache: false,
+          url: "https://api.instagram.com/v1/tags/"+tag+"/media/recent?access_token=806401368.5aa13be.4a08df065cbb41469c9cc20041432d3b",
+           success: function(data) {
+             for (var i = 0; i < 20; i++) {
+             $(".popular").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url +"'></img></a></li>");
+             }
+           }
+        })
+        }
+
+
+        $('#search').on('click', searchImages)
+
+
+get "/tags/tag-name/media/recent" do
+  @storage = []
+  client = Instagram.client(:access_token => session[:access_token])
+    tags = client.tag_search("sfgraffiti")
+    pp client.tag_recent_media(tags[0].name)
+    for media_item in client.tag_recent_media(tags[0].name)
+      @storage << "<img src='#{media_item.images.thumbnail.url}'>"
+  end
+  return @storage.to_json
+end
+

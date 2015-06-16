@@ -1,5 +1,5 @@
 html {
-  background-image: url("../images/Archery-Range.jpg");
+  background-image: url("../images/archery_range.jpg");
   background-color: #cccccc;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -35,5 +35,17 @@ a {
 
 a:hover {
   color: #689F38;
+}
+
+.archery-images-container {
+  width: 800px;
+  float: right;
+
+}
+
+.archery-image {
+  display: inline-block;
+  margin: 10px;
+  border: solid 3px #FFF4B7;
 }
 
