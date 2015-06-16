@@ -38,8 +38,32 @@ end
 
 get "/oauth/callback" do
   response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
+
   redirect "/"
 end
+
+
+#######
+#add this code to a search route - where the search click button goes before an event listener goes off in JS
+
+  # code = params['code']
+
+  # image_response = HTTParty.post('https://api.instagram.com/oauth/access_token', {
+  #   body: {
+  #     client_id:      ENV['LH_CLIENT_ID'],
+  #     client_secret:  ENV['LH_CLIENT_SECRET'],
+  #     grant_type:     "authorization_code",
+  #     redirect_uri:   CALLBACK_URL,
+  #     code:           code,
+  #   }
+  # })
+
+  # content_type :json
+  # response_data = JSON.parse(image_response.body)
+  # access_token = response_data["access_token"]
+#########
+
+
 
 # get "/tags/archery/media/recent" do
 #   @searchresults = []
